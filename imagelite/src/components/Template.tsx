@@ -7,7 +7,7 @@ interface TemplateProps {
     loading ?: boolean;
 }
 
-export const Template: React.FC<TemplateProps> = ({ children, loading }: TemplateProps) => {
+export const Template: React.FC<TemplateProps> = ({ children, loading = false }: TemplateProps) => {
     return (
         <>
             <Header />
@@ -17,9 +17,23 @@ export const Template: React.FC<TemplateProps> = ({ children, loading }: Templat
             <Footer />
         </>
     )
-} 
+}
 
-const Loader: React.FC = () => {
+interface RenderIfProps {
+    condition?: boolean;
+    children: React.ReactNode;
+}
+
+export const RenderIf: React.FC<RenderIfProps> = ({condition = true, children}) => {
+
+    if(condition){
+        return children
+    }
+
+    return false;
+}
+
+export const Loader: React.FC = () => {
     return (
         <div role="status" className="absolute top-2/4 left-2/4 transform -translate-x-1/2 -translate-y-1/2">
             <svg

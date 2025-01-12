@@ -5,6 +5,9 @@ import { Template } from "@/components/Template";
 import { Image } from "@/resources/image/image.resource";
 import { useImageService } from "@/resources/image/image.service";
 import { useState } from "react";
+import Link from "next/link";
+import { Button } from "@/components/Button";
+import { InputText } from "@/components/input/InputText";
 
 export default function GaleryPage(){
     const useService = useImageService();
@@ -37,10 +40,9 @@ export default function GaleryPage(){
         <Template loading={loading}>
             <section className="flex flex-col items-center justify-center my-5">
                 <div className="flex space-x-4">
-                    <input 
-                        type="text" 
-                        className="border px-3 py-2 rounded-lg text-gray-900"
+                    <InputText 
                         onChange={event => setQuery(event.target.value)}
+                        placeholder="Type Name or Tags"
                     />
                     <select 
                         className="border px-4 py-2 rounded-lg text-gray-900"
@@ -51,8 +53,10 @@ export default function GaleryPage(){
                         <option value="JPEG">JPEG</option>
                         <option value="GIF">GIF</option>
                     </select>
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded-lg transition duration-300 ease-in-out hover:bg-blue-300" onClick={searchImages}>Search</button>
-                    <button className="bg-yellow-500 text-white px-4 py-2 rounded-lg transition duration-300 ease-in-out hover:bg-yellow-300" onClick={searchImages}>Add New</button>
+                    <Button label="Search" style="bg-blue-500 hover:bg-blue-300" onClick={searchImages} />
+                    <Link href="/form">
+                        <Button label="Add New" style="bg-yellow-500 hover:bg-ywllow-300" />
+                    </Link>
                 </div>
             </section>
             <section className="grid grid-cols-3 gap-8 pt-4">
