@@ -28,6 +28,7 @@ public class ImageMapper {
                 .name(image.getName())
                 .size(image.getSize())
                 .uploadDate(image.getUploadDate().toLocalDate())
+                .tags(image.getTags())
                 .build();
     }
 }
