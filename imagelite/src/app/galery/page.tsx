@@ -33,6 +33,7 @@ export default function GaleryPage(){
                 size={image.size}
                 uploadDate={image.uploadDate}
                 extension={image.extension}
+                tags={image.tags}
             />
         )
     }
@@ -55,9 +56,9 @@ export default function GaleryPage(){
                             <option value="JPEG">JPEG</option>
                             <option value="GIF">GIF</option>
                         </select>
-                        <Button label="Search" style="bg-blue-500 hover:bg-blue-300" onClick={searchImages} />
-                        <Link href="/form">
-                            <Button label="Add New" style="bg-yellow-500 hover:bg-ywllow-300" />
+                        <Button label="Search" style="bg-indigo-950 hover:bg-indigo-900" onClick={searchImages} />
+                        <Link href="/form" style={{ display: 'flex' }}>
+                            <Button label="Add New" style="bg-rose-800 hover:bg-rose-700" />
                         </Link>
                     </div>
                 </section>

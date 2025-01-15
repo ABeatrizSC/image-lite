@@ -4,4 +4,5 @@ export class Image{
     extension?: string;
     size?: number;
     uploadDate?: string;
+    tags?: string;
 }

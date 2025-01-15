@@ -1,16 +1,21 @@
 'use client'
 
+import { Tag } from "./Tag";
+
 interface ImageCardProps {
     name?: string;
     size?: number;
     uploadDate?: string;
     src?: string;
     extension?: string;
+    tags?: string;
 }
 
 export const ImageCard: React.FC<ImageCardProps> = ({ 
-    name, uploadDate, src, size, extension
+    name, uploadDate, src, size, extension, tags
 }: ImageCardProps) => {
+
+    const tagsArray = tags?.split(",")
 
     function download(){
         window.open(src, '_blank')
@@ -24,6 +29,9 @@ export const ImageCard: React.FC<ImageCardProps> = ({
                 <p className="text-gray-600">{extension}</p>
                 <p className="text-gray-600">{formatBytes(size)}</p>
                 <p className="text-gray-600">{uploadDate}</p>
+                <div className="flex flex-wrap gap-x-4 gap-y-2 mt-3">
+                    { tagsArray?.map((tag, index) => <Tag key={index} tagName={tag} />) }
+                </div>
             </div>
         </div>
     )
