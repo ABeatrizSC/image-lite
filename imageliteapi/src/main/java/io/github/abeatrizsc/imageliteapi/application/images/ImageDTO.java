@@ -1,5 +1,6 @@
 package io.github.abeatrizsc.imageliteapi.application.images;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Data;
 
@@ -12,5 +13,6 @@ public class ImageDTO {
     private String name;
     private String extension;
     private Long size;
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate uploadDate;
 }
