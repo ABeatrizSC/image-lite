@@ -1,4 +1,9 @@
 # Project Image Lite  
+
+
+https://github.com/user-attachments/assets/13879340-90ef-4022-acb0-30c7cd1772ff
+
+
 ## About  
 This project functions as an image repository developed with Spring Boot, ReactJS, and NextJS, allowing users to create accounts, upload JPEG, PNG, and GIF images, view and download them.  
 
