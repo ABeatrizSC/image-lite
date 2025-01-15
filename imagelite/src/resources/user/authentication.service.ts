@@ -84,6 +84,9 @@ class AuthService {
         return false;
     }
 
+    logoutSession(): void {
+        localStorage.removeItem(AuthService.AUTH_PARAM)
+    }
 }
 
 export const useAuth = () => new AuthService(); 

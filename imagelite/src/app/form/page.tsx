@@ -102,9 +102,9 @@ export default function FormPage() {
                             </div>
                             <div className="mt-6 flex items-center justify-end gap-x-6">
                                 <Link href='/galery'>
-                                    <Button label="Cancel" type="button" style="!text-black text-sm/6 font-semibold text-gray-900"/>
+                                    <Button label="Cancel" type="button" style="bg-red-500 text-sm/6 text-gray-900 hover:bg-red-400"/>
                                 </Link>
-                                <Button label="Save" type="submit" style="bg-blue-500 hover:bg-blue-300"/>
+                                <Button label="Save" type="submit" style="bg-indigo-950 hover:bg-indigo-900"/>
                             </div>
                         </div>
                     </form>

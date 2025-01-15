@@ -1,6 +1,10 @@
 'use client'
 
 import React from "react";
+import Link from "next/link";
+import { useAuth } from "@/resources/user/authentication.service";
+import { Button } from "./Button";
+import { useRouter } from "next/navigation";
 
 interface TemplateProps {
     children: React.ReactNode;
@@ -57,10 +61,31 @@ export const Loader: React.FC = () => {
 } 
 
 const Header: React.FC = () => {
+    const auth = useAuth();
+    const user = auth.getUserSession();
+    const router = useRouter();
+
+    function logout(){
+        auth.logoutSession();
+        router.push("/login");
+    }
+
     return (
         <header className="bg-indigo-950 text-white py-3">
             <div className="container mx-auto flex justify-between items-center px-4">
-                <h1 className="text-3xl font-bold">ImageLite</h1>
+                <Link href="/galery">
+                    <h1 className="text-3xl font-bold">ImageLite</h1>
+                </Link>
+                <RenderIf condition={!!user}>
+                    <div className="flex items-center">
+                        <div className="relative">
+                            <span>
+                                Hi, {user?.name}
+                            </span>
+                            <Button onClick={logout} label="Logout" style="bg-red-500 ml-5 hover:bg-red-400"/>
+                        </div>
+                    </div>
+                </RenderIf>
             </div>
         </header>
     )
