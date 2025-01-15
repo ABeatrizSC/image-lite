@@ -1,9 +1,13 @@
+import { AuthenticatedPage } from "@/components/AuthenticatedPage";
 import { Template } from "@/components/Template";
+import GaleryPage from "./galery/page";
 
 export default function Home() {
   return (
-    <Template>
-      home
-    </Template>
+    <AuthenticatedPage>
+        <Template>
+            <GaleryPage />
+        </Template>
+    </AuthenticatedPage>
   )
 }
