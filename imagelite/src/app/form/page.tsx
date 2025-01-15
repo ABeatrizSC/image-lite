@@ -10,12 +10,14 @@ import { FormProps, formScheme, formValidationScheme } from "./formScheme";
 import Link from "next/link";
 import { FieldError } from "@/components/input/FieldError";
 import { AuthenticatedPage } from "@/components/AuthenticatedPage";
+import { useNotification } from "@/components/notification";
 
 export default function FormPage() {
 
     const [imagePreview, setImagePreview] = useState<string>(); 
     const [loading, setLoading] = useState<boolean>(false);
     const service = useImageService();
+    const notification = useNotification();
 
     const formik = useFormik<FormProps>({
         initialValues: formScheme,
@@ -35,6 +37,8 @@ export default function FormPage() {
         formik.resetForm();
         setImagePreview('');
         setLoading(false);
+
+        notification.notify('Upload sent successfully!', 'success');
     }
 
     function onFileUpload(event: React.ChangeEvent<HTMLInputElement>){

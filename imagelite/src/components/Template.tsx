@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useAuth } from "@/resources/user/authentication.service";
 import { Button } from "./Button";
 import { useRouter } from "next/navigation";
+import { ToastContainer } from 'react-toastify';
 
 interface TemplateProps {
     children: React.ReactNode;
@@ -19,6 +20,7 @@ export const Template: React.FC<TemplateProps> = ({ children, loading = false }:
                 {!loading ? children : <Loader />}
             </div>
             <Footer />
+            <ToastContainer position='bottom-right' />
         </>
     )
 }

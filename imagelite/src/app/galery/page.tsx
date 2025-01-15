@@ -9,6 +9,7 @@ import Link from "next/link";
 import { Button } from "@/components/Button";
 import { InputText } from "@/components/input/InputText";
 import { AuthenticatedPage } from "@/components/AuthenticatedPage";
+import { useNotification } from "@/components/notification";
 
 export default function GaleryPage(){
     const useService = useImageService();
@@ -16,12 +17,17 @@ export default function GaleryPage(){
     const [query, setQuery] = useState<string>('');
     const [extension, setExtension] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
+    const notification = useNotification();
 
     async function searchImages(){
         setLoading(true)
         const result = await useService.search(query, extension);
         setImages(result);
         setLoading(false);
+
+        if(!result.length){
+            notification.notify('No results found!', 'warning');
+        }
     }
 
     function renderImageCard(image: Image) {

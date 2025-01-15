@@ -10,6 +10,7 @@ import { FieldError } from "@/components/input/FieldError";
 import { AccessToken, Credentials, User } from "@/resources/user/user.resource";
 import { useAuth } from "@/resources/user/authentication.service";
 import { useRouter } from "next/navigation";
+import { useNotification } from "@/components/notification";
 
 export default function Login(){
 
@@ -17,6 +18,7 @@ export default function Login(){
     const [newUserState, setNewUserState] = useState<boolean>(false);
     const auth = useAuth();
     const router = useRouter();
+    const notification = useNotification();
 
     const formik = useFormik<LoginForm>({
         initialValues: formScheme,
@@ -33,23 +35,22 @@ export default function Login(){
             try {
                 const accessToken: AccessToken = await auth.authenticate(credentials);
                 auth.initSession(accessToken);
-                console.log("sessão valida? ", auth.isSessionValid())
                 router.push("/galery")
             } catch (error: any){
                 const message = error?.message;
-                //notification message
+                notification.notify(message, 'error');
             }
         } else {
             const user: User = { email: values.email, name: values.name, password: values.password }
 
             try {
                 await auth.save(user);
-                //notification.notify("success on saving user!", "success");
+                notification.notify('success on saving user!', 'success');
                 formik.resetForm();
                 setNewUserState(false);
             } catch(error: any) {
                 const message = error?.message;
-                //notification message
+                notification.notify(message, 'error');
             }
         }
 
