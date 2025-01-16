@@ -3,6 +3,7 @@
 
 https://github.com/user-attachments/assets/13879340-90ef-4022-acb0-30c7cd1772ff
 
+🟢 [README: pt-br](/README.pt.md)
 
 ## About  
 This project functions as an image repository developed with Spring Boot, ReactJS, and NextJS, allowing users to create accounts, upload JPEG, PNG, and GIF images, view and download them.  
@@ -12,10 +13,10 @@ This project functions as an image repository developed with Spring Boot, ReactJ
 - `imageliteapi`: Stores the back-end code for the REST API developed using Java and Spring Boot.  
 
 ## Features  
-- User creation  
-- View uploaded images  
-- Add new images  
-- Download images  
+- User creation;
+- View/Search uploaded images;  
+- Add new images;  
+- Download images;  
 
 ## Technologies Used  
 
@@ -35,13 +36,11 @@ This project functions as an image repository developed with Spring Boot, ReactJ
 
 * **Spring Security**: A powerful and customizable authentication and access control framework for Java applications.
 
-* **JWT (JSON Web Token)**: A compact, URL-safe means of representing claims to be transferred between two parties. In this application, JWT is used for securely transmitting information about the user’s identity and for maintaining stateless authentication in a microservices architecture.
+* **JWT (JSON Web Token)**: Open standard that allows secure transmission of authentication information.
 
 * **TailwindCSS**: A utility-first CSS framework that allows developers to build modern, responsive designs by composing utility classes directly in the HTML.
 
 * **Lombok**: A Java library that reduces boilerplate code by generating common methods like getters, setters, constructors, and more through annotations.
-
-* **MapStruct**: A code generator that simplifies the mapping of Java bean properties, making it easier to convert between different object models and reducing the amount of manual mapping code required.
 
 * **JPA**: The Java Persistence API, a specification that provides object-relational mapping (ORM) to manage relational data in Java applications.
 
@@ -88,7 +87,16 @@ cd image-lite
 docker-compose up
  ```
 
-## Endpoints - Back-End API
+## Front-End - Screens/Pages
+-  `/login`: A page where the user can log in or register.
+-  `/galery`: Through this page, users can view all posted images, download by clicking on them, search, and apply filters to find other images. Additionally, by clicking the "Add New" button, users are redirected to the `/form` page to publish a new image. The user will only be able to access this page if they are authenticated (logged into their account).
+- `/form`: A form with all the required fields for publishing a new image. The user will only be able to access this page if they are authenticated (logged into their account).
+
+**If the user is unauthenticated or enters a path other than those mentioned above, the `404 Not Found` page will be displayed.**
+
+## Back-End - API Enpoints
+
+If you want to test the API using Postman, here are all the endpoints, requests, responses, and other important information.
 
 ### Summary of Endpoints  
 
@@ -146,7 +154,7 @@ docker-compose up
 #### Possible responses to errors and exceptions
 `401 Unauthorized`: Incorrect email or password.
 
-### Save images
+### Save an image
 * Endpoint: /v1/images
 * HTTP method: POST
 * You must be authenticated
@@ -165,7 +173,7 @@ docker-compose up
 #### Possible responses to errors and exceptions
 `403 Forbidden`: Invalid token.
 
-### Get images
+### Get all images
 * Endpoint: /v1/images
 * HTTP method: GET
 
@@ -184,7 +192,7 @@ docker-compose up
 ]
  ```
 
-### Search an image
+### Search an image by its extension, name or tag
 * Endpoint: /v1/images?extension=:extension&query=:query
 * HTTP method: GET
 
@@ -209,7 +217,7 @@ docker-compose up
 ]
 ```
 
-### Get an image by Id
+### Get an image by ID
 * Endpoint: /v1/images/:id
 * HTTP method: GET
 
